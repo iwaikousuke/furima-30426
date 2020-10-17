@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters.' }
     validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'is invalid. Input full-width katakana characters.' }
     validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'is invalid. Input full-width katakana characters.' }
-    validates :password, format: { with: /\A[a-z0-9]+\z/, message: ' Include both letters and numbers.' }
-    # validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]{6,128}+\z/i }
+    # validates :password, format: { with: /\A[a-z0-9]+\z/, message: ' Include both letters and numbers.' }
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]{6,128}+\z/i }
   end
 end
