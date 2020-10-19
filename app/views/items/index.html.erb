@@ -121,9 +121,11 @@
   <%# /FURIMAの特徴 %>
 
   <%# 商品一覧 %>
+  <%# <% if user_signed_in? && @item == @item %> 
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
         <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+  <% if @item == @item %>
      <ul class='item-lists'>
     <% @items.each do |item| %>
       <li class='list'>
@@ -153,7 +155,7 @@
         <% end %>
       </li>
     <% end %>
-
+  <% else %>
       <%# 商品がない場合のダミー %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
@@ -172,6 +174,7 @@
           </div>
         </div>
         <% end %>
+  <% end %>
       </li>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# /商品がない場合のダミー %>
