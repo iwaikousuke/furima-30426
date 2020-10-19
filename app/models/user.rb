@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items
-
   TEXT_REGEX = /\A[ぁ-んァ-ン一-龥]/
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters.' } do
     validates :last_name
