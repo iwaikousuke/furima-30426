@@ -22,8 +22,6 @@
         <%= "(税込)送料込み"%>
       </span>
     </div>
-
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in? %>
       <% if current_user.id == @item.user_id %>
         <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
@@ -35,10 +33,6 @@
       <% end %>
     <% end%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
-
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
     <div class="item-explain-box">
       <span><%= @item.text %></span>
     </div>
