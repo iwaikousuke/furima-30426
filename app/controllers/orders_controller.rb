@@ -1,14 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :move_to_index, expect: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
   
   def index
-    @item = Item.find(params[:item_id])
     @order_purchase = OrderPurchase.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_purchase = OrderPurchase.new(purchase_params)
 
     if @order_purchase.valid?
