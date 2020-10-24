@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order_purchase do
-    token                {"tok_aaaaa11111"}
+    token                { 'tok_aaaaa11111' }
     postal_code          { '123-4567' }
     prefecture_id        { 2 }
     city                 { '横浜市' }
@@ -8,6 +8,5 @@ FactoryBot.define do
     phone_number         { '09012345678' }
     association :user
     association :item
-    
   end
 end
