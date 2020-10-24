@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   def move_to_index
     if current_user.id == @item.user.id   #一行で収めたい場合は｜｜を使用　elsif文は不要。
       redirect_to root_path
-    elsif @item.user.id == @item.purchase
+    elsif @item.purchase.present?
       redirect_to root_path
     end
   end
