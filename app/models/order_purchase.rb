@@ -17,7 +17,7 @@ class OrderPurchase
   #配送先（都道府県）のバリデーションについて
   validates :prefecture_id, numericality: { other_than: 1 }
     def save
-      purchase = Purchase.create(user_id: user.id, item_id: item.id)
+      purchase = Purchase.create(user_id: user_id, item_id: item_id)
       Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_address: street_address, phone_number: phone_number, building: building, purchase_id: purchase.id)
     end
 end
