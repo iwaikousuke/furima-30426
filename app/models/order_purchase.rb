@@ -7,14 +7,14 @@ class OrderPurchase
 
   # 配送先に関するバリデーション（建物名は任意なので除く）
   with_options presence: true do
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'input correctly,Include hyphen(-).' }
-    validates :phone_number, format: { with: /\A\d{11}\z/, message: 'input only number.' }
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'ハイフンを入れて入力してください' }
+    validates :phone_number, format: { with: /\A\d{11}\z/, message: 'ハイフンは除いて入力してください' }
   end
 
   validates :city, :street_address, presence: true
 
   # 配送先（都道府県）のバリデーションについて
-  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください'}
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)

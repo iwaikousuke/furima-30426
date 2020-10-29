@@ -11,7 +11,9 @@ class Item < ApplicationRecord
 
   validates :image, :name, :text, :category, :status, :shopping, :prefecture, :day, :price, presence: true
 
-  validates :category_id, :status_id, :shopping_id, :prefecture_id, :day_id, numericality: { other_than: 1 }
+  validates :category_id, :status_id, :shopping_id, :prefecture_id, :day_id, numericality: { other_than: 1, message: 'を選択してください'}
 
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: '300~9999999' }
+  with_options presence: true, format: { with: /\A[0-9]+\z/, message: '半角英数字で入力してください' } do
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300円~9999999円' }
+  end
 end
