@@ -6,6 +6,8 @@
     <h1 class='form-header-text'>
       会員情報入力
     </h1>
+    <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, class:"input-default" ,method: :post%>
+    <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, class:"input-default", method: :post%>
   </div>
   <div class='login-flash-message'>
     <%= flash[:notice] %>
@@ -27,6 +29,9 @@
     </div>
     <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
+  <%if @sns_id.present? %>
+   <%= hidden_field_tag :sns_auth, true %>
+  <% else %>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">パスワード</label>
@@ -34,6 +39,7 @@
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
   </div>
+  <% end %>
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
   </div>
