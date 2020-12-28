@@ -65,12 +65,12 @@ gem 'pry-rails'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
-group :production do
-  gem 'rails_12factor'
-end
 gem 'payjp'
 gem 'rails-i18n'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 gem 'aws-sdk-s3', require: false
+group :production do
+  gem 'unicorn', '5.4.1'
+end
